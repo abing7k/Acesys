@@ -4,6 +4,9 @@ import router from './router'
 import axios from 'axios'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import "./style/andreas08(blue).css"
+import "./style/andreas08(green).css"
+import "./style/andreas08(orange).css"
 // import articleitem from '@/components/article-item'
 // Vue.component(articlelist.name, articlelist)
 Vue.config.productionTip = false
