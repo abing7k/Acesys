@@ -12,8 +12,6 @@
     <sql id="Base_Column_List">
         id, role
     </sql>
-    <select id="getRolesById" resultType="com.example.server.pojo.UserRole">
 
-    </select>
 
 </mapper>

@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @MapperScan("com.example.server.mapper")
-public class YebApplication {
+public class AcesysSpringBootApplication {
     public static void main(String[] args) {
-        SpringApplication.run(YebApplication.class,args);
+        SpringApplication.run(AcesysSpringBootApplication.class,args);
     }
 }
