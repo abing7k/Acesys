@@ -15,4 +15,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface UsrMapper extends BaseMapper<Usr> {
 
+    Usr getAdminByUserName(String username);
 }

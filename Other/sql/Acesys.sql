@@ -11,7 +11,7 @@
  Target Server Version : 80025
  File Encoding         : 65001
 
- Date: 02/11/2022 21:45:08
+ Date: 02/11/2022 22:58:56
 */
 
 SET NAMES utf8mb4;
@@ -143,7 +143,7 @@ CREATE TABLE `usr`  (
                         `country` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '表示用户国家',
                         `zip` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '表示地区邮政编码',
                         `companyaddress` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '表示用户公司地址',
-                        `superuser` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '表示用户权限标志1.普通注册用户2.高权限用户3.管理员',
+                        `superuser` int(0) NULL DEFAULT NULL COMMENT '表示用户权限标志1.普通注册用户2.高权限用户3.管理员',
                         `note` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '表示备注',
                         `fullname` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '表示全名',
                         `title` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '表示称呼',
@@ -154,9 +154,9 @@ CREATE TABLE `usr`  (
 -- ----------------------------
 -- Records of usr
 -- ----------------------------
-INSERT INTO `usr` VALUES (1, 'admin', '123456', 'aa', 'aa', 'aa', '135', '22', 'aa', 'aa', 'aa', '3', 'aa', 'aa0', 'aa', 0);
-INSERT INTO `usr` VALUES (2, 'lixing', 'lixing', 'ascent', '', '', '123456', 'lixing@163.com', '', '', 'ascent', '2', '', '', '', 0);
-INSERT INTO `usr` VALUES (3, 'ascent', 'ascent', '', '', '', '123456', 'lixing@163.com', '', '', '', '1', '', '', '', 0);
-INSERT INTO `usr` VALUES (4, 'shang', 'shang', 'ascent', '', '', '1213', 'lixing051116@163.com', '', '100085', '', '1', '', 'dfdf', '', 0);
+INSERT INTO `usr` VALUES (1, 'admin', '123456', 'aa', 'aa', 'aa', '135', '22', 'aa', 'aa', 'aa', 3, 'aa', 'aa0', 'aa', 0);
+INSERT INTO `usr` VALUES (2, 'lixing', 'lixing', 'ascent', '', '', '123456', 'lixing@163.com', '', '', 'ascent', 2, '', '', '', 0);
+INSERT INTO `usr` VALUES (3, 'ascent', 'ascent', '', '', '', '123456', 'lixing@163.com', '', '', '', 1, '', '', '', 0);
+INSERT INTO `usr` VALUES (4, 'shang', 'shang', 'ascent', '', '', '1213', 'lixing051116@163.com', '', '100085', '', 1, '', 'dfdf', '', 0);
 
 SET FOREIGN_KEY_CHECKS = 1;

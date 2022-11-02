@@ -9,7 +9,7 @@
         <result column="note" property="note" />
         <result column="product_id" property="productId" />
         <result column="productname" property="productname" />
-        <result column="delFlag" property="delFlag" />
+        <result column="del_flag" property="delFlag" />
         <result column="image" property="image" />
         <result column="newproduct" property="newproduct" />
         <result column="price1" property="price1" />
@@ -17,7 +17,7 @@
         <result column="realstock" property="realstock" />
         <result column="stock" property="stock" />
         <result column="cas" property="cas" />
-        <result column="categoryno" property="categoryno" />
+        <result column="catalogno" property="catalogno" />
         <result column="mdlint" property="mdlint" />
         <result column="formula" property="formula" />
         <result column="weight" property="weight" />
@@ -25,7 +25,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, category, note, product_id, productname, delFlag, image, newproduct, price1, price2, realstock, stock, cas, categoryno, mdlint, formula, weight
+        id, category, note, product_id, productname, del_flag, image, newproduct, price1, price2, realstock, stock, cas, catalogno, mdlint, formula, weight
     </sql>
 
 </mapper>

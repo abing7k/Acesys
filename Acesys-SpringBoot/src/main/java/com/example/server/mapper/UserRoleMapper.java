@@ -1,8 +1,10 @@
 package com.example.server.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.server.pojo.Orders;
+import com.example.server.pojo.UserRole;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,6 +15,7 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2022-11-02
  */
 @Mapper
-public interface OrdersMapper extends BaseMapper<Orders> {
+public interface UserRoleMapper extends BaseMapper<UserRole> {
 
+    List<UserRole> getRolesById(Integer id);
 }

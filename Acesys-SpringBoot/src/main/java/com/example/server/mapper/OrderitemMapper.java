@@ -2,6 +2,7 @@ package com.example.server.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.server.pojo.Orderitem;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.example.server.pojo.Orderitem;
  * @author hanbing
  * @since 2022-11-02
  */
+@Mapper
 public interface OrderitemMapper extends BaseMapper<Orderitem> {
 
 }

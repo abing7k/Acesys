@@ -27,4 +27,10 @@
         id, username, password, companyname, city, job, tel, email, country, zip, companyaddress, superuser, note, fullname, title, del_flag
     </sql>
 
+    <select id="getAdminByUserName" resultType="com.example.server.pojo.Usr">
+        select
+        <include refid="Base_Column_List"/>
+        from usr where username = #{username}
+    </select>
+
 </mapper>
