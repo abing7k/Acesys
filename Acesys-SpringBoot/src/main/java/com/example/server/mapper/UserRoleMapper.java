@@ -17,5 +17,4 @@ import java.util.List;
 @Mapper
 public interface UserRoleMapper extends BaseMapper<UserRole> {
 
-    List<UserRole> getRolesById(Integer id);
 }

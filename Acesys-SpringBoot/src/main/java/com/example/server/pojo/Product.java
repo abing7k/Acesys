@@ -48,7 +48,7 @@ public class Product implements Serializable {
     @ApiModelProperty(value = "1表示删除,0表示未删除")
     @TableLogic
     @TableField("del_flag")
-    private Integer delFlag;
+    private Boolean delFlag;
 
     @ApiModelProperty(value = "表示分子结构图片路径名称")
     private String image;

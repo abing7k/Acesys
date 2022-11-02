@@ -7,7 +7,6 @@ import com.example.server.pojo.Usr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -18,7 +17,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
@@ -91,8 +89,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return username -> {
             Usr usr = usrMapper.getAdminByUserName(username);
             if (usr != null) {
-                usr.setRoles(userRoleMapper.getRolesById(usr.getSuperuser()));
-                return (UserDetails) usr;
+                return usr;
             }
             throw new UsernameNotFoundException("用户或密码不正确");
         };

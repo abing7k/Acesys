@@ -44,7 +44,7 @@ public class Orders implements Serializable {
     @ApiModelProperty(value = "1代表删除,0代表未删除")
     @TableField("del_flag")
     @TableLogic
-    private String delFlag;
+    private Integer delFlag;
 
 
 }
