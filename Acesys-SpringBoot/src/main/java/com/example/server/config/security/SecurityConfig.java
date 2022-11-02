@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,10 +22,7 @@ import org.springframework.security.web.access.intercept.FilterSecurityIntercept
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
- * @PROJECT_NAME: yeb-java
- * @DESCRIPTION:
- * @USER: 韩冰
- * @DATE: 2022/7/29 0029 23:40
+ *
  */
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -35,10 +33,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private RestfulAccessDeniedHandler restfulAccessDeniedHandler;
     @Autowired
     private RestAuthorizationEntryPoint restAuthorizationEntryPoint;
-    @Autowired
-    private CustomFilter customFilter;
-    @Autowired
-    private CustomUrlDecisionManager customUrlDecisionManager;
     @Autowired
     private UserRoleMapper userRoleMapper;
 
@@ -73,15 +67,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //所有请求都需要验证
                 .anyRequest()
                 .authenticated()
-                .withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
-                    @Override
-                    public <O extends FilterSecurityInterceptor> O postProcess(O object) {
-                        object.setAccessDecisionManager(customUrlDecisionManager);
-                        object.setSecurityMetadataSource(customFilter);
-//                        System.err.println("SecurityConfig postProcess");
-                        return object;
-                    }
-                })
                 .and()
                 //禁用缓存
                 .headers()
@@ -104,11 +89,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public UserDetailsService userDetailsService() {
         return username -> {
-            //这里按照教学视频会报循环注入的错,所以不能用IAdminService,只能用AdminMapper来查询
             Usr usr = usrMapper.getAdminByUserName(username);
             if (usr != null) {
                 usr.setRoles(userRoleMapper.getRolesById(usr.getSuperuser()));
-                return usr;
+                return (UserDetails) usr;
             }
             throw new UsernameNotFoundException("用户或密码不正确");
         };

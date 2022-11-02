@@ -134,7 +134,7 @@ DROP TABLE IF EXISTS `usr`;
 CREATE TABLE `usr`  (
                         `id` int(0) NOT NULL AUTO_INCREMENT COMMENT '表示用户ID标识号，是自动递增的主键',
                         `username` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '表示用户名称',
-                        `password` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '表示用户密码(加密后)',
+                        `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '表示用户密码(加密后)',
                         `companyname` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '表示用户公司名称',
                         `city` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '表示用户生活城市',
                         `job` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '表示用户工作',
