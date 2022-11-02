@@ -17,6 +17,7 @@
     <modules>
         <module>Acesys-SpringBoot</module>
         <module>Acesys-JavaWeb</module>
+        <module>Acesys-generator</module>
     </modules>
 
     <properties>
