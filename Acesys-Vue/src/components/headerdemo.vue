@@ -7,13 +7,12 @@
 
     <div id="navigation">
       <ul>
-        <li class="selected"></li>
-        <li><a href="index.html">首页</a></li>
-        <li><a href="product/itservice.html">IT服务</a></li>
-        <li><a href="product/products.html">医药商务系统</a></li>
-        <li><a href="product/employee.html">员工招聘</a></li>
-        <li><a href="product/ContactUs.html">关于我们</a></li>
-        <li></li>
+        <!-- <li class="selected"></li> -->
+        <li @click="toheader('/')">首页</li>
+        <li @click="toheader('/IT')">IT服务</li>
+        <li @click="toheader('/staff')">医药商务系统</li>
+        <li @click="toheader('/medicine')">员工招聘</li>
+        <li @click="toheader('/about')">关于我们</li>
       </ul>
     </div>
   </div>
@@ -22,8 +21,54 @@
 <script>
 export default {
   name: "headerdemo",
+  methods: {
+    toheader(data) {
+      this.$router.push(data);
+    },
+  },
 };
 </script>
 
-<style>
+<style lang="less" scoped>
+#navigation {
+  height: 2.5em;
+  line-height: 2.5em;
+  width: 758px;
+  margin: 0 1px;
+  background: #578bb8;
+  color: #ffffff;
+}
+
+#navigation li {
+  float: left;
+  list-style-type: none;
+  border-right: 1px solid #ffffff;
+  white-space: nowrap;
+  min-width:50px;
+  padding: 0.2em;
+  text-align: center;
+}
+
+#navigation li a {
+  display: block;
+  padding: 0 10px;
+  font-size: 0.8em;
+  font-weight: normal;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: inherit;
+  color: #ffffff;
+}
+
+* html #navigation a {
+  width: 1%;
+}
+
+#navigation .selected,
+#navigation a:hover {
+  background: #80b0da;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 12px;
+}
 </style>

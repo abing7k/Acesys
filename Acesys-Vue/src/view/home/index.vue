@@ -1,7 +1,7 @@
 <template>
   <div id="container">
     <headerdemo></headerdemo>
-    <router-view style="min-height:400px;" />
+    <router-view style="min-height:350px;" />
     <footerdemo></footerdemo>
   </div>
 </template>

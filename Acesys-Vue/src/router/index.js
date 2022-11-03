@@ -9,8 +9,77 @@ const routes = [
     children: [
       {
         path: "/",
+        name: "pageheader",
+        component: () => import("@/view/home/page.vue"),
+      },
+      {
+        path: "/IT",
+        name: "IT",
+        component: () => import("@/view/home/ITView.vue"),
+      },
+      {
+        path: "/staff",
+        name: "staff",
+        component: () => import("@/view/home/StaffView.vue"),
+      },
+      {
+        path: "/medicine",
+        name: "medicine",
+        component: () => import("@/view/home/MedicineView.vue"),
+      },
+      {
+        path: "/about",
+        name: "about",
+        component: () => import("@/view/home/AboutView.vue"),
+      },
+      {
+        path: "/register",
+        name: "register",
+        component: () => import("@/view/home/register.vue"),
+      },
+    ],
+  },
+  {
+    path: "/admin",
+    component: () => import("@/view/home"),
+    children: [
+      {
+        path: "/",
         name: "userlist",
-        component: () => import("@/view/admin/userlist.vue"),
+        component: () => import("@/view/admin/index.vue"),
+      },
+    ],
+  },
+  {
+    path: "/admin/adminorderitem",
+    component: () => import("@/view/home"),
+    children: [
+      {
+        path: "/",
+        name: "adminorderitem",
+        component: () => import("@/view/admin/adminorderitem.vue"),
+      },
+    ],
+  },
+  {
+    path: "/admin/updateproductuser",
+    component: () => import("@/view/home"),
+    children: [
+      {
+        path: "/",
+        name: "updateproductuser",
+        component: () => import("@/view/admin/updateproductuser.vue"),
+      },
+    ],
+  },
+  {
+    path: "/admin/updateproducts",
+    component: () => import("@/view/home"),
+    children: [
+      {
+        path: "/",
+        name: "updateproducts",
+        component: () => import("@/view/admin/updateproducts.vue"),
       },
     ],
   },
