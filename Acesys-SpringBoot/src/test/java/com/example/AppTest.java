@@ -1,38 +1,34 @@
 package com.example;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+
+import com.example.server.mapper.CanRegisteredMapper;
+import com.example.server.mapper.UserRoleMapper;
+import com.example.server.mapper.UsrMapper;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * Unit test for simple App.
  */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class AppTest{
+    @Autowired
+    UsrMapper usrMapper;
+    @Autowired
+    UserRoleMapper userRoleMapper;
+    @Autowired
+    CanRegisteredMapper canRegisteredMapper;
+    @Test
+    public void test01(){
+        System.out.println(userRoleMapper.getRoleById(usrMapper.getSuperuserByUserName("admin")));
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
-
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+    @Test
+    public void test02(){
+        System.out.println(canRegisteredMapper.CanRegistered(0));
     }
 }

@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  *
  * @author hanbing
- * @since 2022-11-02
+ * @since 2022-11-03
  */
 @RestController
-@RequestMapping("/usr")
-public class UsrController {
-    
+@RequestMapping("/can-registered")
+public class CanRegisteredController {
+
 }

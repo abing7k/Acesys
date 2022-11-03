@@ -1,4 +1,5 @@
 package com.example.server.mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.server.pojo.UserRole;
@@ -16,5 +17,5 @@ import java.util.List;
  */
 @Mapper
 public interface UserRoleMapper extends BaseMapper<UserRole> {
-
+    String getRoleById(@Param("id") Integer id);
 }

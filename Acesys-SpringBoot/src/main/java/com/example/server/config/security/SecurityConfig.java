@@ -30,8 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private RestfulAccessDeniedHandler restfulAccessDeniedHandler;
     @Autowired
     private RestAuthorizationEntryPoint restAuthorizationEntryPoint;
-    @Autowired
-    private UserRoleMapper userRoleMapper;
+
 
     @Override
     public void configure(WebSecurity web){

@@ -2,6 +2,7 @@ package com.example.server.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.server.config.security.component.JwtTokenUtils;
+import com.example.server.mapper.UserRoleMapper;
 import com.example.server.mapper.UsrMapper;
 import com.example.server.pojo.RespBean;
 import com.example.server.pojo.Usr;
@@ -37,6 +38,12 @@ public class UsrServiceImpl extends ServiceImpl<UsrMapper, Usr> implements IUsrS
     private PasswordEncoder passwordEncoder;
     @Autowired
     private JwtTokenUtils jwtTokenUtils;
+    @Autowired
+    UserRoleMapper userRoleMapper;
+    @Autowired
+    UsrMapper usrMapper;
+
+
     @Value("${jwt.tokenHead}")
     private String tokenHead;
     @Override
@@ -60,6 +67,8 @@ public class UsrServiceImpl extends ServiceImpl<UsrMapper, Usr> implements IUsrS
                 null, userDetails.getAuthorities());
 
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+
+        request.getSession().setAttribute("role",userRoleMapper.getRoleById(usrMapper.getSuperuserByUserName(username)));
 
         //生成token
         String token = jwtTokenUtils.generateToken(userDetails);

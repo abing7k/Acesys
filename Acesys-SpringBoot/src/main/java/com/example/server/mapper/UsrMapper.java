@@ -1,4 +1,5 @@
 package com.example.server.mapper;
+import java.util.List;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.server.pojo.Usr;
@@ -16,4 +17,8 @@ import org.apache.ibatis.annotations.Mapper;
 public interface UsrMapper extends BaseMapper<Usr> {
 
     Usr getAdminByUserName(String username);
+
+    Integer getIdByUserName(String username);
+
+    Integer getSuperuserByUserName(String username);
 }

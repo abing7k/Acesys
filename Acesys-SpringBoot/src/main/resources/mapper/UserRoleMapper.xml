@@ -12,6 +12,11 @@
     <sql id="Base_Column_List">
         id, role
     </sql>
+    <select id="getRoleById" resultType="string">
+        select role
+        from user_role
+        where id = #{id,jdbcType=NUMERIC}
+    </select>
 
 
 </mapper>
