@@ -4,6 +4,7 @@
 // })
 module.exports = {
   publicPath: './', // 公共路径 默认为"/"，建议使用"./"相对路径
+  lintOnSave: false,
   pages: {
     index: {
       // 入口
