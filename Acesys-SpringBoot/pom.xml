@@ -79,6 +79,21 @@
             <version>0.0.9</version>
         </dependency>
 
+
+        <!--FastDFS依赖 用来更新头像，这个包maven中没有，需要自己去网上找1.29的-->
+        <dependency>
+            <groupId>org.csource</groupId>
+            <artifactId>fastdfs-client-java</artifactId>
+            <version>1.29-SNAPSHOT</version>
+        </dependency>
+
+        <!--easy poi 可以使用注解定义需要导出的哪些字段-->
+        <dependency>
+            <groupId>cn.afterturn</groupId>
+            <artifactId>easypoi-spring-boot-starter</artifactId>
+            <version>4.2.0</version>
+        </dependency>
+
         <!--redis-->
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.boot</groupId>-->

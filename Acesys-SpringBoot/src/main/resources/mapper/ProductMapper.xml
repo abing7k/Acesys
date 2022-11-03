@@ -28,4 +28,8 @@
         id, category, note, product_id, productname, del_flag, image, newproduct, price1, price2, realstock, stock, cas, catalogno, mdlint, formula, weight
     </sql>
 
+    <insert id="add" >
+        insert into
+    </insert>
+
 </mapper>

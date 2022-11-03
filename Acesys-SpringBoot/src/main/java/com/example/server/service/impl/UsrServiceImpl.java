@@ -1,5 +1,6 @@
 package com.example.server.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.server.config.security.component.JwtTokenUtils;
 import com.example.server.mapper.UserRoleMapper;
@@ -76,5 +77,11 @@ public class UsrServiceImpl extends ServiceImpl<UsrMapper, Usr> implements IUsrS
         tokenMap.put("token", token);
         tokenMap.put("tokenHead", tokenHead);
         return RespBean.success("登录成功", tokenMap);
+    }
+
+    @Override
+    public Usr getUsrByUserName(String username) {
+        return usrMapper.selectOne(new QueryWrapper<Usr>()
+                .eq("username", username));
     }
 }
