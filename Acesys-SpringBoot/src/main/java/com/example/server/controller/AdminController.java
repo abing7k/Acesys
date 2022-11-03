@@ -23,7 +23,8 @@ import org.springframework.web.multipart.MultipartFile;
  * @DATE: 2022/11/3 0003 10:14
  */
 @Api(tags = "AdminController")
-@RestController("/admin")
+@RestController
+@RequestMapping("/admin")
 public class AdminController {
     @Autowired
     CanRegisteredMapper canRegisteredMapper;

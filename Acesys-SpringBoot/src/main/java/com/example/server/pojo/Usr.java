@@ -10,11 +10,14 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -86,7 +89,15 @@ public class Usr implements Serializable, UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        List<Role> roleList = new ArrayList();
+        Role role = new Role();
+        role.setNameZh(roles);
+        roleList.add(role);
+        List<SimpleGrantedAuthority> authorities = roleList
+                .stream()
+                .map(r -> new SimpleGrantedAuthority(r.getNameZh()))
+                .collect(Collectors.toList());
+        return authorities;
     }
 
     @Override

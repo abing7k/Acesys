@@ -9,9 +9,30 @@
         <result column="del_flag" property="delFlag" />
     </resultMap>
 
+    <resultMap id="MenusWithRoles" type="com.example.server.pojo.Menu" extends="BaseResultMap">
+        <collection property="roles" ofType="com.example.server.pojo.Role">
+            <id column="rid" property="id"/>
+            <result column="rname" property="name"/>
+            <result column="rnameZh" property="nameZh"/>
+        </collection>
+    </resultMap>
+
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id, url, del_flag
     </sql>
+
+    <select id="getMenusWithRole" resultMap="MenusWithRoles">
+        select m.*,
+               r.id     as rid,
+               r.name   as rname,
+               r.nameZh as rnameZh
+        from menu m,
+             menu_role mr,
+             role r
+        where m.id = mr.mid
+          and mr.rid = r.id
+        order by m.id;
+    </select>
 
 </mapper>
