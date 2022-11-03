@@ -11,11 +11,26 @@
  Target Server Version : 80025
  File Encoding         : 65001
 
- Date: 02/11/2022 22:58:56
+ Date: 03/11/2022 10:41:01
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for can_registered
+-- ----------------------------
+DROP TABLE IF EXISTS `can_registered`;
+CREATE TABLE `can_registered`  (
+                                   `registered` int(0) NULL DEFAULT NULL COMMENT '能否注册,1代表能, 0代表不能',
+                                   `id` int(0) NOT NULL AUTO_INCREMENT,
+                                   PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of can_registered
+-- ----------------------------
+INSERT INTO `can_registered` VALUES (0, 1);
 
 -- ----------------------------
 -- Table structure for mailtb
@@ -154,9 +169,9 @@ CREATE TABLE `usr`  (
 -- ----------------------------
 -- Records of usr
 -- ----------------------------
-INSERT INTO `usr` VALUES (1, 'admin', '123456', 'aa', 'aa', 'aa', '135', '22', 'aa', 'aa', 'aa', 3, 'aa', 'aa0', 'aa', 0);
-INSERT INTO `usr` VALUES (2, 'lixing', 'lixing', 'ascent', '', '', '123456', 'lixing@163.com', '', '', 'ascent', 2, '', '', '', 0);
-INSERT INTO `usr` VALUES (3, 'ascent', 'ascent', '', '', '', '123456', 'lixing@163.com', '', '', '', 1, '', '', '', 0);
-INSERT INTO `usr` VALUES (4, 'shang', 'shang', 'ascent', '', '', '1213', 'lixing051116@163.com', '', '100085', '', 1, '', 'dfdf', '', 0);
+INSERT INTO `usr` VALUES (1, 'admin', '$2a$10$ogvUqZZAxrBwrmVI/e7.SuFYyx8my8d.9zJ6bs9lPKWvbD9eefyCe', 'aa', 'aa', 'aa', '135', '22', 'aa', 'aa', 'aa', 3, 'aa', 'aa0', 'aa', 0);
+INSERT INTO `usr` VALUES (2, 'lixing', '$2a$10$ogvUqZZAxrBwrmVI/e7.SuFYyx8my8d.9zJ6bs9lPKWvbD9eefyCe', 'ascent', '', '', '123456', 'lixing@163.com', '', '', 'ascent', 2, '', '', '', 0);
+INSERT INTO `usr` VALUES (3, 'ascent', '$2a$10$ogvUqZZAxrBwrmVI/e7.SuFYyx8my8d.9zJ6bs9lPKWvbD9eefyCe', '', '', '', '123456', 'lixing@163.com', '', '', '', 1, '', '', '', 0);
+INSERT INTO `usr` VALUES (4, 'shang', '$2a$10$ogvUqZZAxrBwrmVI/e7.SuFYyx8my8d.9zJ6bs9lPKWvbD9eefyCe', 'ascent', '', '', '1213', 'lixing051116@163.com', '', '100085', '', 1, '', 'dfdf', '', 0);
 
 SET FOREIGN_KEY_CHECKS = 1;
