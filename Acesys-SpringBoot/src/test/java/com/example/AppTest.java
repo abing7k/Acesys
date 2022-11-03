@@ -22,10 +22,6 @@ public class AppTest{
     UserRoleMapper userRoleMapper;
     @Autowired
     CanRegisteredMapper canRegisteredMapper;
-    @Test
-    public void test01(){
-        System.out.println(userRoleMapper.getRoleById(usrMapper.getSuperuserByUserName("admin")));
-    }
 
     @Test
     public void test02(){

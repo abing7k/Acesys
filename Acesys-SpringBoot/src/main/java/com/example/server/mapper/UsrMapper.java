@@ -20,5 +20,4 @@ public interface UsrMapper extends BaseMapper<Usr> {
 
     Integer getIdByUserName(String username);
 
-    Integer getSuperuserByUserName(String username);
 }

@@ -3,12 +3,16 @@ package com.example.server.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.server.mapper.CanRegisteredMapper;
 import com.example.server.mapper.ProductMapper;
+import com.example.server.mapper.UsrMapper;
 import com.example.server.pojo.Product;
 import com.example.server.pojo.RespBean;
+import com.example.server.pojo.Usr;
 import com.example.server.service.IProductService;
+import com.example.server.service.IUsrService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -27,6 +31,10 @@ public class AdminController {
     IProductService productService;
     @Autowired
     ProductMapper productMapper;
+    @Autowired
+    UsrMapper usrMapper;
+    @Autowired
+    IUsrService usrService;
 
     @ApiOperation(value = "控制是否开启注册功能")
     @PostMapping("canRegistered")
@@ -63,6 +71,13 @@ public class AdminController {
     @PostMapping(value = "/deleteProduct")
     public RespBean deleteProduct(@RequestBody Integer id) {
         return productService.updatePdelete(id);
+    }
+
+    @Transactional
+    @ApiOperation(value = "添加用户")
+    @PostMapping(value = "/addUsr")
+    public RespBean addUsr(@RequestBody Usr usr) {
+        return usrService.addUsr(usr);
     }
 
 }

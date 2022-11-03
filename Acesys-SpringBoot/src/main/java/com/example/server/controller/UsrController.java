@@ -31,8 +31,9 @@ public class UsrController {
             return null;
         }
         String username = principal.getName();
-        Usr admin = usrService.getUsrByUserName(username);
-        admin.setPassword(null);
-        return admin;
+        Usr usr = usrService.getUsrByUserName(username);
+        usr.setRoles(usrService.getRolesById(usr.getId()));
+        usr.setPassword(null);
+        return usr;
     }
 }

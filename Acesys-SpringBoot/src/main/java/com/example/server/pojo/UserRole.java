@@ -13,7 +13,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author hanbing
@@ -23,7 +23,7 @@ import java.io.Serializable;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("user_role")
-@ApiModel(value="UserRole对象", description="")
+@ApiModel(value = "UserRole对象", description = "")
 public class UserRole implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -32,8 +32,11 @@ public class UserRole implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "表示用户权限标志1.普通注册用户2.高权限用户3.管理员")
-    private String role;
+    @ApiModelProperty(value = "uid")
+    private Integer uid;
+
+    @ApiModelProperty(value = "rid")
+    private Integer rid;
 
 
 }

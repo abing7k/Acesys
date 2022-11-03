@@ -66,9 +66,6 @@ public class Usr implements Serializable, UserDetails {
     @ApiModelProperty(value = "表示用户公司地址")
     private String companyaddress;
 
-    @ApiModelProperty(value = "表示用户权限标志1.普通注册用户2.高权限用户3.管理员")
-    private Integer superuser;
-
     @ApiModelProperty(value = "表示备注")
     private String note;
 
@@ -85,7 +82,7 @@ public class Usr implements Serializable, UserDetails {
 
     @ApiModelProperty(value = "角色")
     @TableField(exist = false)
-    private List<UserRole> roles;
+    private String roles;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
