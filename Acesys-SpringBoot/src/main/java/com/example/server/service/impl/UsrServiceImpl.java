@@ -97,6 +97,9 @@ public class UsrServiceImpl extends ServiceImpl<UsrMapper, Usr> implements IUsrS
 
     @Override
     public RespBean addUsr(Usr usr) {
+        if (!usr.getPassword().isEmpty()) {
+            usr.setPassword(passwordEncoder.encode(usr.getPassword()));
+        }
         String roles = usr.getRoles();
         int m = usrMapper.insert(usr);
         int n = 0;

@@ -74,7 +74,7 @@ public class AdminController {
         return productService.updatePdelete(id);
     }
 
-    @Transactional
+
     @ApiOperation(value = "添加用户")
     @PostMapping(value = "/addUsr")
     public RespBean addUsr(@RequestBody Usr usr) {

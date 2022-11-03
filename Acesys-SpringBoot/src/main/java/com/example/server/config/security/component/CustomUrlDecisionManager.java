@@ -26,13 +26,14 @@ public class CustomUrlDecisionManager implements AccessDecisionManager {
             String needRole = configAttribute.getAttribute();
             System.err.println("needRole: "+needRole);
             //判断角色是否登录即可访问的角色,此角色在CustomFilter中设置
-//            if ("ROLE_LOGIN".equals(needRole)){
-//                if (!(authentication instanceof AbstractAuthenticationToken)){
-//                    throw new AccessDeniedException("尚未登录,请登录");
-//                }else {
-//                    return;
-//                }
-//            }
+            if ("游客".equals(needRole)){
+                //此处判断是否登录有错,暂时取反
+                if (!(authentication instanceof AbstractAuthenticationToken)){
+                    throw new AccessDeniedException("尚未登录,请登录");
+                }else {
+                    return;
+                }
+            }
 
             //判断用户角色是否为url所需的角色
             Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
