@@ -83,65 +83,81 @@ const routes = [
       },
     ],
   },
+  {
+    path: "/user",
+    component: () => import("@/view/home"),
+    children: [
+      {
+        path: "/",
+        name: "user",
+        component: () => import("@/view/user/UserlistView.vue"),
+      },
+    ],
+  },
+  {
+    path: "/user/search",
+    component: () => import("@/view/home"),
+    children: [
+      {
+        path: "/",
+        name: "search",
+        component: () => import("@/view/user/searchList.vue"),
+      },
+    ],
+  },
+  {
+    path: "/user/orderdetail",
+    component: () => import("@/view/home"),
+    children: [
+      {
+        path: "/",
+        name: "orderlistdetail",
+        component: () => import("@/view/user/orderlistdetail.vue"),
+      },
+    ],
+  },
+  {
+    path: "/tourist",
+    component: () => import("@/view/home"),
+    children: [
+      {
+        path: "/",
+        name: "tourist",
+        component: () => import("@/view/tourist/ProductView.vue"),
+      },
+    ],
+  },
 ];
 const routers = new VueRouter({
   routes,
 });
 // 全局守卫，前置守卫（在路由跳转之前判断）
 // routers.beforeEach(async (to, from, next) => {
-//   // to:获取到要跳转到的路由信息
-//   // console.warn(from)
-//   // from：获取到从哪个路由跳转过来来的信息
-//   // next: next() 放行  next(path) 放行
-//   // console.log(next())
-//   // console.log(to.path)
-//   const token = store.state.user.token
-//   // await store.dispatch('getUserInfo', token)
-//   const name = store.state.user.userInfo.name
-//   console.log(token)
-//   console.log(name)
-//   if (name) {
-//     // console.log('用户已经登录')
+//   var userinfo = JSON.parse(localStorage.getItem("userdata"));
+//   console.log(userinfo);
+//   if (userinfo) {
 //     // 用户已经登录了，但是想去登录页面和注册页面不行，只能退出登录
-//     if (to.path === '/login' || to.path === '/register') {
-//       next('/my')
-//       // next()
+//     if (to.path === "/login" || to.path === "/register") {
+//       next("/page");
 //     } else {
-//       // 登陆了且没有用户信息
-//       // 在路由跳转之前获取用户信息且放行
-//       try {
-//         await store.dispatch('getUserInfo', token)
-//         next()
-//       } catch (error) {
-//         // token失效从新登录
-//         await store.dispatch('userLogout', token)
-//         next('/login')
-//         // next()
-//       }
-//       // next()// 放行
+//       next();
 //     }
-//     // next()
 //   } else {
-//     console.log('用户未登录')
-//     // 未登录：不能去【/publish(我发布的)|/edituser（编辑个人资料页面）|/attention(我的关注页面)|/submitpublish（发布文章页面）|/collect(我的收藏)/changepwd(修改密码)】
-//     // 并跳转至登录路由
-//     const toPath = to.path
-//     // console.log(toPath)
-//     // 路径中有这种路由，则跳转至登录页面，否则放行
+//     const toPath = to.path;
 //     if (
-//       toPath.indexOf('/publish') !== -1 ||
-//       toPath.indexOf('/edituser') !== -1 ||
-//       toPath.indexOf('/attention') !== -1 ||
-//       toPath.indexOf('/submitpublish') !== -1 ||
-//       toPath.indexOf('/collect') !== -1 ||
-//       toPath.indexOf('/changepwd') !== -1 ||
-//       toPath.indexOf('/articlesdetail') !== -1
+//       toPath.indexOf("/post") !== -1 ||
+//       toPath.indexOf("/article") !== -1 ||
+//       toPath.indexOf("/person") !== -1 ||
+//       toPath.indexOf("/videoplay") !== -1 ||
+//       toPath.indexOf("/myarticle") !== -1 ||
+//       toPath.indexOf("/myplayer") !== -1 ||
+//       toPath.indexOf("/edit") !== -1
 //     ) {
-//       next('/login?redirect=' + toPath)
+//       next("/login?redirect=" + toPath);
 //       // next()
 //     } else {
-//       next()
+//       next();
 //     }
 //   }
-// })
+// });
 export default routers;
