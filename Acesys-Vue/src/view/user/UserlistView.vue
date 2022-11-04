@@ -454,33 +454,18 @@ export default {
 td[data-v-43464b41][data-v-43464b41] {
   float: revert;
 }
-//   .select {
-//     background-image: url(../images/search-product_09.jpg);
-//     width: 535px;
-//     height: 200px;
-//     float: left;
-// }
-/deep/ .el-tabs__nav .el-tabs__item {
-  font-size: 12px;
-  color: #467aa7;
-  font-weight: bold;
-}
-/deep/ .el-tabs__active-bar {
-  background-color: #467aa7;
-}
-td[data-v-43464b41] {
-  float: right;
-}
-/deep/ .el-table .cell {
-  font-size: 12px;
-}
-.demo-ruleForm {
-  // display: flex;
-  // flex-wrap: wrap;
-  margin-top: 10px;
-  margin-left: 150px;
-  .el-input {
-    width: 200px;
+  /deep/ .el-tabs__nav .el-tabs__item {
+    font-size: 12px;
+    color: #467aa7;
+    font-weight: bold;
   }
+  /deep/ .el-tabs__active-bar {
+    background-color: #467aa7;
+  }
+  td[data-v-43464b41] {
+    float: right;
 }
-</style>
+  /deep/ .el-table .cell{
+      font-size: 12px;
+  }
+  </style>

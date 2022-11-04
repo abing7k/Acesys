@@ -81,6 +81,11 @@ const routes = [
         name: "updateproducts",
         component: () => import("@/view/admin/updateproducts.vue"),
       },
+      {
+        path: "user",
+        name: "userlist2",
+        component: () => import("@/view/user/UserlistView.vue"),
+      },
     ],
   },
   {

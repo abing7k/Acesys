@@ -38,6 +38,7 @@
         label="状态"
         width="60"
         :formatter="delShow"
+>>>>>>> fb82cc63edf6669d47bf2703aac0d404a8d11de2
       >
       </el-table-column> -->
       <el-table-column label="状态" width="71" :formatter="delShow">
@@ -108,7 +109,7 @@ export default {
   },
   methods: {
     handleClick(tab, event) {
-      //   console.log(tab, event);
+        console.log(tab, event);
     },
     //设置表头颜色
     rowClass({ row, rowIndex }) {
