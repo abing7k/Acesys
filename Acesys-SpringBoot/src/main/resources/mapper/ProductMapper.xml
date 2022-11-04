@@ -28,8 +28,18 @@
         id, category, note, product_id, productname, del_flag, image, newproduct, price1, price2, realstock, stock, cas, catalogno, mdlint, formula, weight
     </sql>
 
-    <insert id="add" >
-        insert into
-    </insert>
+    <select id="getAllById" resultType="com.example.server.pojo.Product">
+        select
+        <include refid="Base_Column_List"/>
+        from product
+        where
+        id = #{id,jdbcType=NUMERIC}
+    </select>
+    <update id="updateWeightById">
+        update product
+        set weight = #{weight,jdbcType=DECIMAL}
+        where id = #{id,jdbcType=NUMERIC}
+    </update>
+
 
 </mapper>

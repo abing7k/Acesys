@@ -18,15 +18,5 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/vip")
 public class VipController {
-    @Autowired
-    IUsrService usrService;
-
-    @ApiOperation(value = "注册账号")
-    @PostMapping("registered")
-    public RespBean registered(@RequestBody Usr usr) {
-        return usrService.registered(usr);
-    }
-
-
 
 }

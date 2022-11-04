@@ -2,6 +2,8 @@ package com.example.server.controller;
 
 import com.example.server.pojo.AdminLoginParam;
 import com.example.server.pojo.RespBean;
+import com.example.server.pojo.Usr;
+import com.example.server.service.IUsrService;
 import com.example.server.service.impl.UsrServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -25,10 +27,26 @@ import javax.servlet.http.HttpServletRequest;
 public class LoginController {
     @Autowired
     UsrServiceImpl usradminService;
-
+    @Autowired
+    IUsrService usrService;
     @ApiOperation(value = "登录之后返回token")
     @PostMapping("/login")
     public RespBean login(@RequestBody AdminLoginParam adminLoginParam, HttpServletRequest request){
         return usradminService.login(adminLoginParam.getUsername(),adminLoginParam.getPassword(),adminLoginParam.getCode(),request);
     }
+
+    @ApiOperation(value = "注册账号")
+    @PostMapping("registered")
+    public RespBean registered(@RequestBody Usr usr) {
+        return usrService.registered(usr);
+    }
+
+    @ApiOperation(value = "注销账号")
+    @PostMapping("logout")
+    public RespBean logout() {
+        return RespBean.success("注销成功");
+    }
+
+
+
 }

@@ -185,9 +185,7 @@ public class UsrServiceImpl extends ServiceImpl<UsrMapper, Usr> implements IUsrS
                 UserRole userRole = new UserRole();
                 userRole.setUid(usr.getId());
                 if (roles.equals("管理员")) {
-                    userRole.setRid(1);
-                    System.out.println(userRole);
-                    n = n + userRoleMapper.insert(userRole);
+                    return RespBean.error("不能注册管理员");
                 }
                 if (roles.equals("会员")) {
                     userRole.setRid(1);

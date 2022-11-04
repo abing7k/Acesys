@@ -1,4 +1,6 @@
 package com.example.server.mapper;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.server.pojo.Product;
@@ -15,5 +17,8 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface ProductMapper extends BaseMapper<Product> {
 
-    boolean add(Product product);
+
+    Product getAllById(@Param("id") Integer id);
+
+    int updateWeightById(@Param("weight") Float weight, @Param("id") Integer id);
 }

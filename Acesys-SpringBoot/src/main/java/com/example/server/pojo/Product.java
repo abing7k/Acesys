@@ -81,7 +81,7 @@ public class Product implements Serializable {
     private String formula;
 
     @ApiModelProperty(value = "重量")
-    private String weight;
+    private Float weight;
 
 
 }

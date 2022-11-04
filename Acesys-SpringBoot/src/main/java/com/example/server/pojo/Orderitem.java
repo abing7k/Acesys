@@ -37,7 +37,7 @@ public class Orderitem implements Serializable {
     private Integer pid;
 
     @ApiModelProperty(value = "表示商品质量")
-    private String quantity;
+    private Float quantity;
 
 
 }
