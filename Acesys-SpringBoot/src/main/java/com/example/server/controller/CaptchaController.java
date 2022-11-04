@@ -1,6 +1,7 @@
 package com.example.server.controller;
 
 import com.google.code.kaptcha.impl.DefaultKaptcha;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,7 @@ import java.io.IOException;
  * @USER: 韩冰
  * @DATE: 2022/8/1 0001 23:40
  */
+@Api(tags = "CaptchaController")
 @RestController
 public class CaptchaController {
 

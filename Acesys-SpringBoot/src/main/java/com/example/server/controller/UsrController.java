@@ -3,6 +3,7 @@ package com.example.server.controller;
 
 import com.example.server.pojo.Usr;
 import com.example.server.service.IUsrService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,7 @@ import java.security.Principal;
  * @author hanbing
  * @since 2022-11-02
  */
+@Api(tags = "UsrController")
 @RestController
 @RequestMapping("/usr")
 public class UsrController {

@@ -3,6 +3,7 @@ package com.example.server.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.server.config.security.component.JwtTokenUtils;
+import com.example.server.mapper.CanRegisteredMapper;
 import com.example.server.mapper.RoleMapper;
 import com.example.server.mapper.UserRoleMapper;
 import com.example.server.mapper.UsrMapper;
@@ -45,14 +46,16 @@ public class UsrServiceImpl extends ServiceImpl<UsrMapper, Usr> implements IUsrS
     @Autowired
     private JwtTokenUtils jwtTokenUtils;
     @Autowired
-    UserRoleMapper userRoleMapper;
+    private UserRoleMapper userRoleMapper;
     @Autowired
-    UsrMapper usrMapper;
+    private UsrMapper usrMapper;
     @Autowired
     private RoleMapper roleMapper;
-
+    @Autowired
+    private CanRegisteredMapper canRegisteredMapper;
     @Value("${jwt.tokenHead}")
     private String tokenHead;
+
 
     @Override
     public RespBean login(String username, String password, String code, HttpServletRequest request) {
@@ -127,7 +130,6 @@ public class UsrServiceImpl extends ServiceImpl<UsrMapper, Usr> implements IUsrS
     @Override
     @Transactional
     public RespBean updateUsr(Usr usr) {
-
         if (!usr.getPassword().isEmpty()) {
             usr.setPassword(passwordEncoder.encode(usr.getPassword()));
         }
@@ -156,15 +158,50 @@ public class UsrServiceImpl extends ServiceImpl<UsrMapper, Usr> implements IUsrS
     @Override
     @Transactional
     public RespBean deleteUsr(Integer id) {
-        if ( usrMapper.deleteById(id)+userRoleMapper.updateByUid(id)>=2){
+        if (usrMapper.deleteById(id) + userRoleMapper.updateByUid(id) >= 2) {
             return RespBean.success("删除成功");
-        }else {
+        } else {
             return RespBean.error("删除失败");
         }
     }
 
     @Override
     public RespBean showUsrs() {
-        return RespBean.success("查询成功",usrMapper.selectAll());
+        return RespBean.success("查询成功", usrMapper.selectAll());
     }
+
+    @Override
+    public RespBean registered(Usr usr) {
+        if (canRegisteredMapper.selectById(1).getRegistered() == 1) {
+            if (!usr.getPassword().isEmpty()) {
+                usr.setPassword(passwordEncoder.encode(usr.getPassword()));
+            } else {
+                return RespBean.error("密码不能为空");
+            }
+            String roles = usr.getRoles();
+            int m = usrMapper.insert(usr);
+            int n = 0;
+            if (roles != null && !roles.equals("")) {
+                UserRole userRole = new UserRole();
+                userRole.setUid(usr.getId());
+                if (roles.equals("管理员")) {
+                    userRole.setRid(1);
+                    System.out.println(userRole);
+                    n = n + userRoleMapper.insert(userRole);
+                }
+                if (roles.equals("会员")) {
+                    userRole.setRid(1);
+                    n = n + userRoleMapper.insert(userRole);
+                }
+            }
+            if (m + n >= 2) {
+                return RespBean.success("添加成功");
+            } else {
+                return RespBean.error("添加失败");
+            }
+        }else {
+            return RespBean.error("注册功能未开放");
+        }
+    }
+
 }

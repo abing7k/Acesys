@@ -32,4 +32,6 @@ public interface IUsrService extends IService<Usr> {
     RespBean deleteUsr(Integer id);
 
     RespBean showUsrs();
+
+    RespBean registered(Usr usr);
 }
