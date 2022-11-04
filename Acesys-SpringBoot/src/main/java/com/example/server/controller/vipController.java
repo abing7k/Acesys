@@ -19,6 +19,6 @@ public class vipController {
     @ApiOperation(value = "hello")
     @GetMapping("hello")
     public String CanRegistered() {
-        return "hello";
+        return "hello666";
     }
 }
