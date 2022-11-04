@@ -31,10 +31,10 @@ public class Orderitem implements Serializable {
     private Integer id;
 
     @ApiModelProperty(value = "表示订单ID")
-    private Integer ordersid;
+    private Integer oid;
 
     @ApiModelProperty(value = "表示商品ID")
-    private Integer productid;
+    private Integer pid;
 
     @ApiModelProperty(value = "表示商品质量")
     private String quantity;

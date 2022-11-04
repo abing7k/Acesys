@@ -35,7 +35,7 @@ public class Orders implements Serializable {
     private Integer id;
 
     @ApiModelProperty(value = "表示客户标识号")
-    private Integer usrid;
+    private Integer uid;
 
     @ApiModelProperty(value = "表示生成订单的时间")
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/ShangHai")

@@ -26,4 +26,10 @@ public interface IUsrService extends IService<Usr> {
     String getRolesById(Integer id);
 
     RespBean addUsr(Usr usr);
+
+    RespBean updateUsr(Usr usr);
+
+    RespBean deleteUsr(Integer id);
+
+    RespBean showUsrs();
 }

@@ -5,8 +5,8 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.example.server.pojo.Orderitem">
         <id column="id" property="id" />
-        <result column="ordersid" property="ordersid" />
-        <result column="productid" property="productid" />
+        <result column="oid" property="oid" />
+        <result column="pid" property="pid" />
         <result column="quantity" property="quantity" />
     </resultMap>
 

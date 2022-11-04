@@ -5,13 +5,19 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.example.server.pojo.UserRole">
         <id column="id" property="id" />
-        <result column="role" property="role" />
+        <result column="uid" property="uid" />
+        <result column="uid" property="uid" />
+        <result column="rid" property="rid" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id, role
     </sql>
+
+    <update id="updateByUid">
+        update user_role set del_flag = 1 where uid = #{uid}
+    </update>
     <select id="getRoleById" resultType="string">
         select role
         from user_role

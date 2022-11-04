@@ -1,8 +1,10 @@
 package com.example.server.mapper;
 import java.util.List;
+import java.util.Map;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.server.pojo.Usr;
+import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -20,4 +22,6 @@ public interface UsrMapper extends BaseMapper<Usr> {
 
     Integer getIdByUserName(String username);
 
+    @MapKey("id")
+    List<Map<String,Object>> selectAll();
 }

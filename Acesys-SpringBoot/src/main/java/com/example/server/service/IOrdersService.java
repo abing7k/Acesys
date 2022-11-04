@@ -2,6 +2,7 @@ package com.example.server.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.server.pojo.Orders;
+import com.example.server.pojo.RespBean;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.example.server.pojo.Orders;
  */
 public interface IOrdersService extends IService<Orders> {
 
+    RespBean showOrders();
 }

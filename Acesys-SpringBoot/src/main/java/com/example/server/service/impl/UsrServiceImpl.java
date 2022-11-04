@@ -96,6 +96,7 @@ public class UsrServiceImpl extends ServiceImpl<UsrMapper, Usr> implements IUsrS
     }
 
     @Override
+    @Transactional
     public RespBean addUsr(Usr usr) {
         if (!usr.getPassword().isEmpty()) {
             usr.setPassword(passwordEncoder.encode(usr.getPassword()));
@@ -121,5 +122,49 @@ public class UsrServiceImpl extends ServiceImpl<UsrMapper, Usr> implements IUsrS
         } else {
             return RespBean.error("添加失败");
         }
+    }
+
+    @Override
+    @Transactional
+    public RespBean updateUsr(Usr usr) {
+
+        if (!usr.getPassword().isEmpty()) {
+            usr.setPassword(passwordEncoder.encode(usr.getPassword()));
+        }
+        String roles = usr.getRoles();
+        int m = usrMapper.insert(usr);
+        if (roles != null && !roles.equals("")) {
+            UserRole userRole = new UserRole();
+            userRole.setUid(usr.getId());
+            if (roles.equals("管理员")) {
+                userRole.setRid(1);
+                System.out.println(userRole);
+                userRoleMapper.updateById(userRole);
+            }
+            if (roles.equals("会员")) {
+                userRole.setRid(1);
+                userRoleMapper.updateById(userRole);
+            }
+        }
+        if (m > 0) {
+            return RespBean.success("修改成功");
+        } else {
+            return RespBean.error("修改失败");
+        }
+    }
+
+    @Override
+    @Transactional
+    public RespBean deleteUsr(Integer id) {
+        if ( usrMapper.deleteById(id)+userRoleMapper.updateByUid(id)>=2){
+            return RespBean.success("删除成功");
+        }else {
+            return RespBean.error("删除失败");
+        }
+    }
+
+    @Override
+    public RespBean showUsrs() {
+        return RespBean.success("查询成功",usrMapper.selectAll());
     }
 }

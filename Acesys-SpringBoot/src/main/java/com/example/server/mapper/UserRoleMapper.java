@@ -1,4 +1,5 @@
 package com.example.server.mapper;
+import io.swagger.models.auth.In;
 import org.apache.ibatis.annotations.Param;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
@@ -18,4 +19,6 @@ import java.util.List;
 @Mapper
 public interface UserRoleMapper extends BaseMapper<UserRole> {
     String getRoleById(@Param("id") Integer id);
+
+    Integer updateByUid(Integer uid);
 }
