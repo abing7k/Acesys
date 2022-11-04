@@ -130,11 +130,14 @@ public class UsrServiceImpl extends ServiceImpl<UsrMapper, Usr> implements IUsrS
     @Override
     @Transactional
     public RespBean updateUsr(Usr usr) {
-        if (!usr.getPassword().isEmpty()) {
+        System.out.println(usr);
+        if (usr.getPassword() != null && usr.getPassword().length() > 0) {
             usr.setPassword(passwordEncoder.encode(usr.getPassword()));
+        }else {
+            usr.setPassword(usrMapper.getPasswordById(usr.getId()));
         }
         String roles = usr.getRoles();
-        int m = usrMapper.insert(usr);
+        int m = usrMapper.updateById(usr);
         if (roles != null && !roles.equals("")) {
             UserRole userRole = new UserRole();
             userRole.setUid(usr.getId());
@@ -197,7 +200,7 @@ public class UsrServiceImpl extends ServiceImpl<UsrMapper, Usr> implements IUsrS
             } else {
                 return RespBean.error("添加失败");
             }
-        }else {
+        } else {
             return RespBean.error("注册功能未开放");
         }
     }

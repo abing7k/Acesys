@@ -21,4 +21,6 @@ public interface ProductMapper extends BaseMapper<Product> {
     Product getAllById(@Param("id") Integer id);
 
     int updateWeightById(@Param("weight") Float weight, @Param("id") Integer id);
+
+    String getImageById(@Param("id") Integer id);
 }

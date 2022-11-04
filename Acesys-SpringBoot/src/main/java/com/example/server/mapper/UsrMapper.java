@@ -1,4 +1,5 @@
 package com.example.server.mapper;
+import org.apache.ibatis.annotations.Param;
 import java.util.List;
 import java.util.Map;
 
@@ -24,4 +25,6 @@ public interface UsrMapper extends BaseMapper<Usr> {
 
     @MapKey("id")
     List<Map<String,Object>> selectAll();
+
+    String getPasswordById(@Param("id") Integer id);
 }

@@ -38,8 +38,24 @@
     </select>
 
     <select id="selectAll" resultType="java.util.Map">
-        select *
+        select
+            usr.*,
+            role.nameZh as roles
+        from
+            usr,
+            user_role,
+            role
+        where
+            usr.id = user_role.uid
+          and
+            user_role.rid = role.id
+          and
+            usr.del_flag = 0
+    </select>
+    <select id="getPasswordById" resultType="string">
+        select password
         from usr
+        where id = #{id,jdbcType=NUMERIC}
     </select>
 
 

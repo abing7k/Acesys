@@ -15,9 +15,12 @@ import org.springframework.web.multipart.MultipartFile;
  */
 public interface IProductService extends IService<Product> {
 
-    RespBean addProduct(MultipartFile file, Product product);
+    RespBean addProduct(Product product);
+    RespBean addProductImg(MultipartFile file);
 
-    RespBean updateProduct(MultipartFile file, Product product);
+    RespBean updateProduct(Product product);
 
-    RespBean updatePdelete(Integer id);
+    RespBean deleteProduct(Integer id);
+
+
 }

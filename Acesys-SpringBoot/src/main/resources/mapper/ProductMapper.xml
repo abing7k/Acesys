@@ -40,6 +40,11 @@
         set weight = #{weight,jdbcType=DECIMAL}
         where id = #{id,jdbcType=NUMERIC}
     </update>
+    <select id="getImageById" resultType="string">
+        select image
+        from product
+        where id = #{id,jdbcType=NUMERIC}
+    </select>
 
 
 </mapper>

@@ -71,20 +71,26 @@ public class AdminController {
 
     @ApiOperation(value = "添加产品")
     @PostMapping(value = "/addProduct")
-    public RespBean addProduct(@RequestParam MultipartFile file, Product product) {
-        return productService.addProduct(file, product);
+    public RespBean addProduct(@RequestBody Product product) {
+        return productService.addProduct(product);
+    }
+
+    @ApiOperation(value = "添加产品图片")
+    @PostMapping(value = "/addProductImg")
+    public RespBean addProduct(@RequestParam MultipartFile file) {
+        return productService.addProductImg(file);
     }
 
     @ApiOperation(value = "更新产品")
     @PostMapping(value = "/updateProduct")
-    public RespBean updateProduct(@RequestParam MultipartFile file, Product product) {
-        return productService.updateProduct(file, product);
+    public RespBean updateProduct(@RequestBody Product product) {
+        return productService.updateProduct(product);
     }
 
     @ApiOperation(value = "删除产品")
     @DeleteMapping(value = "/deleteProduct")
     public RespBean deleteProduct(@RequestBody Integer id) {
-        return productService.updatePdelete(id);
+        return productService.deleteProduct(id);
     }
 
     @ApiOperation(value = "添加用户")
