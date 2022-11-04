@@ -21,10 +21,10 @@
         包括积木，新颖的胺物、被保护的胺物、不自然的氨基酸、酮、醋醛、heterocycles、isatoic酐、boroinc酸和手性
         的中间体可能加速您的药物研究过程。某某也提供半大块中间体(10公斤)，大块中间体(对吨)，使原材料和他们的
         中间体服麻醉剂进入合理的价格和优良品质。 请参观<a
-          href="../product/products_showyk.html"
+          @click="topath('/tourist')"
           >浏览产品页</a
         >。 <br />
-        编目可以在网上被观看或者由<a href="../product/Product_Searchyk.html"
+        编目可以在网上被观看或者由<a @click="topath('/user')"
           >查询产品浏览产品</a
         >
         或您喜欢电子上接受我们的编目的(以PDF或SD格式)，请电子邮件我们.
@@ -62,6 +62,11 @@ export default {
   components: {
     login,
   },
+  methods:{
+    topath(data){
+      this.$router.push(data)
+    }
+  }
 };
 </script>
 

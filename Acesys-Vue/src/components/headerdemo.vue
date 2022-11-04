@@ -10,8 +10,8 @@
         <!-- <li class="selected"></li> -->
         <li @click="toheader('/')">首页</li>
         <li @click="toheader('/IT')">IT服务</li>
-        <li @click="toheader('/staff')">医药商务系统</li>
-        <li @click="toheader('/medicine')">员工招聘</li>
+        <li @click="toheader('/medicine')">医药商务系统</li>
+        <li @click="toheader('/staff')">员工招聘</li>
         <li @click="toheader('/about')">关于我们</li>
       </ul>
     </div>

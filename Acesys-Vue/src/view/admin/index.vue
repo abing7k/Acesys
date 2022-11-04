@@ -1,5 +1,7 @@
 <template>
   <div style="margin: 40px">
+    <span>| 欢迎，{{ username }} | </span>
+    <el-button type="text" @click="open"> 注销 </el-button>
     <el-breadcrumb separator-class="el-icon-arrow-right" class="breadcrumb">
       <el-breadcrumb-item :to="{ path: '/' }" class="breadcrumb-text"
         >我的位置</el-breadcrumb-item
@@ -43,6 +45,7 @@ export default {
   },
   data() {
     return {
+      username:"",
       activeName: "用户列表",
       //   表格数据
       tableData: [

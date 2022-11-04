@@ -17,9 +17,24 @@ axios.defaults.baseURL = '/api'
 axios.defaults.timeout = 5000
 import headerdemo from "./components/headerdemo.vue"
 import footerdemo from "./components/footerdemo.vue"
+import username from "./components/username.vue"
 Vue.component(headerdemo.name, headerdemo)
 Vue.component(footerdemo.name,footerdemo)
+Vue.component(username.name,username)
 new Vue({
   router,
   render: h => h(App),
 }).$mount('#app')
+// 添加请求拦截器，在请求头中加token
+axios.interceptors.request.use(
+  config => {
+    if (localStorage.getItem("token")) {
+      // config.headers.Authorization = "JWT " + localStorage.getItem("token");
+      config.headers.token = "123"
+    }
+    return config;
+  },
+  error => {
+    return Promise.reject(error);
+  }
+);
