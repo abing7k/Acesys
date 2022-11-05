@@ -43,10 +43,10 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> impleme
     @Transactional
     public RespBean buyProduct(Buy buy) {
         Product product = productMapper.getAllById(buy.getPid());
-        if (buy.getWeight() > product.getWeight()) {
+        if (buy.getNumber() > product.getRealstock()) {
             return RespBean.error("产品数量不足");
         }
-        if (productMapper.updateWeightById(product.getWeight() - buy.getWeight(), buy.getPid()) > 0) {
+        if (productMapper.updateWeightById(product.getRealstock() - buy.getNumber(), buy.getPid()) > 0) {
             Orders orders = new Orders();
             orders.setUid(buy.getUid());
             orders.setDatetime(LocalDate.now());
@@ -54,7 +54,7 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> impleme
                 Orderitem orderitem = new Orderitem();
                 orderitem.setOid(orders.getId());
                 orderitem.setPid(buy.getPid());
-                orderitem.setQuantity(buy.getWeight());
+                orderitem.setNumber(buy.getNumber());
                 if (orderitemMapper.insert(orderitem) > 0) {
                     return RespBean.success("购买成功");
                 }

@@ -63,10 +63,10 @@ public class Product implements Serializable {
     private String price2;
 
     @ApiModelProperty(value = "表示实际库存")
-    private String realstock;
+    private Float realstock;
 
     @ApiModelProperty(value = "表示库存")
-    private String stock;
+    private Float stock;
 
     @ApiModelProperty(value = "表示化学文摘登记号 ")
     private String cas;

@@ -17,11 +17,13 @@
 
     <select id="showOrders" resultType="map">
         select DISTINCT
-            orders.id as id,
-            usr.username as username,
-            orderitem.quantity as quantity,
+            orders.id as oid,
+            usr.id as uid,
+            usr.username as uname,
+            usr.email as email,
+            orderitem.number as number,
             product.id as pid,
-            product.*
+            product.productname as pname
         from
             orders,
             orderitem,

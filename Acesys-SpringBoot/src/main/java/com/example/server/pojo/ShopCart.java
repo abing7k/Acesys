@@ -2,8 +2,8 @@ package com.example.server.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -16,27 +16,24 @@ import java.io.Serializable;
  * </p>
  *
  * @author hanbing
- * @since 2022-11-02
+ * @since 2022-11-05
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="Orderitem对象", description="")
-public class Orderitem implements Serializable {
+@TableName("shop_cart")
+@ApiModel(value="ShopCart对象", description="")
+public class ShopCart implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "表示订单项ID，是自动递增的主键")
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "表示订单ID")
-    private Integer oid;
-
-    @ApiModelProperty(value = "表示商品ID")
     private Integer pid;
 
-    @ApiModelProperty(value = "表示商品质量")
+    private Integer uid;
+
     private Float number;
 
 

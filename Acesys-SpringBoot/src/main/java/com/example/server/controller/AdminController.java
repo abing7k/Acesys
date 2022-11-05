@@ -88,8 +88,8 @@ public class AdminController {
     }
 
     @ApiOperation(value = "删除产品")
-    @DeleteMapping(value = "/deleteProduct")
-    public RespBean deleteProduct(@RequestBody Integer id) {
+    @DeleteMapping(value = "/deleteProduct/{id}")
+    public RespBean deleteProduct(@PathVariable Integer id) {
         return productService.deleteProduct(id);
     }
 
@@ -107,8 +107,8 @@ public class AdminController {
     }
 
     @ApiOperation(value = "删除用户")
-    @DeleteMapping(value = "/deleteUsr")
-    public RespBean deleteUsr(@RequestBody Integer id) {
+    @DeleteMapping(value = "/deleteUsr/{id}")
+    public RespBean deleteUsr(@PathVariable("id") Integer id) {
         return usrService.deleteUsr(id);
     }
 
@@ -142,8 +142,8 @@ public class AdminController {
     }
 
     @ApiOperation(value = "删除订单")
-    @DeleteMapping(value = "/deleteOrders")
-    public RespBean deleteOrders(@RequestBody Integer id) {
+    @DeleteMapping(value = "/deleteOrders/{id}")
+    public RespBean deleteOrders(@PathVariable("id")  Integer id) {
         if (ordersMapper.deleteById(id)>0) {
             return RespBean.success("删除成功");
         }else {

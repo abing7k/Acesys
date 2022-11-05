@@ -2,6 +2,7 @@ package com.example.server.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.server.mapper.ProductMapper;
+import com.example.server.pojo.Plike;
 import com.example.server.pojo.Product;
 import com.example.server.pojo.RespBean;
 import io.swagger.annotations.Api;
@@ -26,12 +27,13 @@ public class ProductController {
 
     @ApiOperation(value = "产品搜索")
     @PostMapping("likeProduct")
-    public RespBean likeProduct(@RequestBody(required = false) String like) {
-        if (like == null||like.equals("")||like.equals("null")){
-            return RespBean.success("查询成功",productMapper.selectList(new QueryWrapper<>()));
-        }
+    public RespBean likeProduct(@RequestBody Plike plike) {
+//        if (like == null||like.equals("")||like.equals("null")){
+//            return RespBean.success("查询成功",productMapper.selectList(new QueryWrapper<>()));
+//        }
         QueryWrapper<Product> queryWrapper = new QueryWrapper<>();
-        queryWrapper.like("productname",like);
+        queryWrapper.like("productname",plike.getLike());
+        queryWrapper.like("category",plike.getType());
         return RespBean.success("查询成功",productMapper.selectList(queryWrapper));
     }
 }

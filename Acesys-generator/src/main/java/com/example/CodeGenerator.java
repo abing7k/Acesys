@@ -64,11 +64,11 @@ public class CodeGenerator {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/acesys?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia" +
+        dsc.setUrl("jdbc:mysql://47.99.49.255:3307/acesys?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia" +
                 "/Shanghai");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
-        dsc.setUsername("root");
-        dsc.setPassword("root");
+        dsc.setUsername("acesys");
+        dsc.setPassword("acesys123456");
         mpg.setDataSource(dsc);
 
         // 包配置
