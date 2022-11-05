@@ -31,3 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
+/Acesys-Vue/node_modules/
+/Acesys-Vue/dist/

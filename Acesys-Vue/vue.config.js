@@ -21,11 +21,15 @@ module.exports = {
   // }
   // 配置代理跨域
   devServer: {
+    port: 8080,
+    open: true,
+    allowedHosts: "all",
     proxy: {
       '/api': {
         // target: 'http://10.37.196.194:8080/',
-        // target: 'http://47.99.49.255:8765/',
-        target:"http://47.99.49.255:5678/",
+        target: 'http://47.99.49.255:8765/',
+        // target:"http://127.0.0.1:8080/",
+        // target:"http://47.99.49.255:5678/",
         pathRewrite: { '^/api': '' }// 重写路径
       }
     }
