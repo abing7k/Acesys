@@ -23,7 +23,9 @@ module.exports = {
   devServer: {
     proxy: {
       '/api': {
-        target: 'http://192.168.43.41:9060/HeartKnow',
+        // target: 'http://10.37.196.194:8080/',
+        // target: 'http://47.99.49.255:8765/',
+        target:"http://47.99.49.255:5678/",
         pathRewrite: { '^/api': '' }// 重写路径
       }
     }
