@@ -15,4 +15,6 @@ import com.example.server.pojo.ShopCart;
 public interface IShopCartService extends IService<ShopCart> {
 
     RespBean updateShopCartNumber(Float number,Integer id);
+
+    RespBean buyCarts(Integer uid, Integer[] cids);
 }

@@ -141,6 +141,18 @@ public class AdminController {
         return ordersService.showOrders();
     }
 
+    @ApiOperation(value = "根据oid查看订单")
+    @PostMapping(value = "/showOrdersByOid/{oid}")
+    public RespBean showOrdersByOid(@PathVariable("oid") Integer oid) {
+        return ordersService.showOrdersByOid(oid);
+    }
+
+    @ApiOperation(value = "根据uid查看订单")
+    @PostMapping(value = "/showOrdersByUid/{uid}")
+    public RespBean showOrdersByUid(@PathVariable("uid") Integer uid) {
+        return ordersService.showOrdersByUid(uid);
+    }
+
     @ApiOperation(value = "删除订单")
     @DeleteMapping(value = "/deleteOrders/{id}")
     public RespBean deleteOrders(@PathVariable("id")  Integer id) {

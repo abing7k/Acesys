@@ -22,8 +22,10 @@
     </update>
 
     <select id="showAllByUid" resultType="java.util.Map">
-        select product.product_id  as prounctId,
-               product.productname as `name`,
+        select shop_cart.id as id,
+               product.id as pid,
+               product.product_id  as prounctId,
+               product.productname as `pname`,
                product.category    as type,
                product.mdlint,
                product.price2      as price,
@@ -34,6 +36,15 @@
         where usr.id = shop_cart.uid
           and product.id = shop_cart.pid
           and shop_cart.uid = #{uid}
+          and shop_cart.del_flag = 0
+    </select>
+
+    <select id="getAllById" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from shop_cart
+        where
+        id = #{id,jdbcType=NUMERIC}
     </select>
 
 </mapper>

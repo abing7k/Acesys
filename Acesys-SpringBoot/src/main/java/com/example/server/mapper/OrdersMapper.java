@@ -10,7 +10,7 @@ import java.util.Map;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author hanbing
@@ -20,5 +20,11 @@ import java.util.Map;
 public interface OrdersMapper extends BaseMapper<Orders> {
 
     @MapKey("id")
-    List<Map<String,Object>> showOrders();
+    List<Map<String, Object>> showOrders();
+
+    @MapKey("oid")
+    List<Map<String, Object>> showOrdersByOid(Integer oid);
+
+    @MapKey("oid")
+    List<Map<String, Object>> showOrdersByUid(Integer uid);
 }

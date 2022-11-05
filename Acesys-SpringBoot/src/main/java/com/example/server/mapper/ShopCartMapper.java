@@ -23,5 +23,7 @@ public interface ShopCartMapper extends BaseMapper<ShopCart> {
     Integer updateNumberById(@Param("number") Float number, @Param("id") Integer id);
 
     @MapKey("id")
-    List<Map<String,String>> showAllByUid(Integer uid);
+    List<Map<String,String>> showAllByUid(Integer id);
+
+    ShopCart getAllById(@Param("id") Integer id);
 }

@@ -40,6 +40,16 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> impleme
     }
 
     @Override
+    public RespBean showOrdersByOid(Integer oid) {
+        return RespBean.success("查询成功", ordersMapper.showOrdersByOid(oid));
+    }
+
+    @Override
+    public RespBean showOrdersByUid(Integer uid) {
+        return RespBean.success("查询成功", ordersMapper.showOrdersByUid(uid));
+    }
+
+    @Override
     @Transactional
     public RespBean buyProduct(Buy buy) {
         Product product = productMapper.getAllById(buy.getPid());
@@ -66,4 +76,6 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> impleme
             return RespBean.error("购买失败");
         }
     }
+
+
 }

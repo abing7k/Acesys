@@ -18,4 +18,8 @@ public interface IOrdersService extends IService<Orders> {
     RespBean showOrders();
 
     RespBean buyProduct(Buy buy);
+
+    RespBean showOrdersByOid(Integer oid);
+
+    RespBean showOrdersByUid(Integer uid);
 }

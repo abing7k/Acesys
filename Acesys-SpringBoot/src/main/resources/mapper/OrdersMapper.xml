@@ -39,4 +39,58 @@
             orders.del_flag = 0
     </select>
 
+    <select id="showOrdersByOid" resultType="map">
+        select DISTINCT
+            orders.id as oid,
+            usr.id as uid,
+            usr.username as uname,
+            usr.email as email,
+            orderitem.number as number,
+            product.id as pid,
+            product.productname as pname
+        from
+            orders,
+            orderitem,
+            product,
+            usr
+        where
+            orders.id = orderitem.oid
+          and
+            orderitem.pid = product.id
+          and
+            orders.uid = usr.id
+          and
+            orders.id = #{oid}
+          and
+            orders.del_flag = 0
+    </select>
+
+
+    <select id="showOrdersByUid" resultType="map">
+        select DISTINCT
+            orders.id as oid,
+            usr.id as uid,
+            usr.username as uname,
+            usr.email as email,
+            orderitem.number as number,
+            product.id as pid,
+            product.productname as pname
+        from
+            orders,
+            orderitem,
+            product,
+            usr
+        where
+            orders.id = orderitem.oid
+          and
+            orderitem.pid = product.id
+          and
+            orders.uid = usr.id
+          and
+            orders.uid = #{uid}
+          and
+            orders.del_flag = 0
+    </select>
+
+
 </mapper>
